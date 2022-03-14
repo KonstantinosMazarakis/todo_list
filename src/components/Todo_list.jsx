@@ -56,7 +56,7 @@ useEffect(()=>{
     {
     list.map((job,i) =>{
         return  <div key={i}>
-            <p id='job' style={{textDecoration:job.finishedJob?"line-through":"" }}>{job.jobs}</p>
+            <span id='job' style={{textDecoration:job.finishedJob?"line-through":"" }}>{job.jobs}</span>
             {job.finishedJob?<input type="checkbox" id='check' defaultChecked onClick={() =>crossed(i)}/>:<input type="checkbox" id='check' onClick={() =>crossed(i)}/>}
             <button className='btn btn-danger' onClick={() =>deleteJob(i)}>Delete</button>
         </div>
