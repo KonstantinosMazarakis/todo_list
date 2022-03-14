@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 
-let Todo_list = (props) =>{
+let Todo_list = () =>{
     const [jobs, setjobs] = useState("")
     const [finishedJob, setfinishedJob] = useState(false)
     const [list, setlist] = useState([])
 
 
 
-
+//prevent the form from reloading the page
 let handleSubmit = (e) => {
     e.preventDefault()
 
@@ -16,7 +16,7 @@ let handleSubmit = (e) => {
     setlist([...list,listObj])
 }
 
-
+// toggles between true or false the job
 let crossed =(i) =>{
     let copyOflist = [...list]
     copyOflist[i].finishedJob = !copyOflist[i].finishedJob
@@ -24,7 +24,7 @@ let crossed =(i) =>{
     setlist(copyOflist)
 }
 
-
+//delete the job
 let deleteJob = (i) =>{
 let filterdlist = list.filter((job,index)=>{
     return index!=i
@@ -32,6 +32,8 @@ let filterdlist = list.filter((job,index)=>{
 setlist(filterdlist)
 }
 
+
+// reload the page and the info will stay
 useEffect(() =>{
 let data = localStorage.getItem("list")
 if(data){
@@ -42,6 +44,8 @@ if(data){
 useEffect(()=>{
     localStorage.setItem('list',JSON.stringify(list))
 })
+//------------------------------------------
+
 
     return<>
 
